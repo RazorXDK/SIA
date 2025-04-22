@@ -1,0 +1,58 @@
+<div class="container">
+  <aside class="sidebar">
+    <!-- Título del sidebar (opcional) -->
+    <div class="sidebar-title">
+      Sistema Académico SIA
+    </div>
+    
+    <nav>
+
+       <!-- Usuarios -->
+       <a routerLink="/dashboard" routerLinkActive="activo" class="sidebar-link">
+        <i class="fas fa-users"></i>
+        <span>Dashboard</span>
+      </a>
+
+
+      <!-- Usuarios -->
+      <a routerLink="/usuarios" routerLinkActive="activo" class="sidebar-link">
+        <i class="fas fa-users"></i>
+        <span>Usuarios</span>
+      </a>
+    
+      <!-- Establecimiento -->
+      <a routerLink="/establecimiento" routerLinkActive="activo" class="sidebar-link">
+        <i class="fas fa-school"></i>
+        <span>Establecimientos</span>
+      </a>
+    
+      
+    
+     
+    
+    
+      
+      
+    
+      <!-- Configuración -->
+      <a routerLink="/configuracion" routerLinkActive="activo" class="sidebar-link">
+        <i class="fas fa-cogs"></i>
+        <span>Configuración</span>
+      </a>
+    
+     
+
+      <a routerLink="/auth" routerLinkActive="activo" class="sidebar-link">
+        <i class="fas fa-sign-out-alt"></i>  <!-- Ícono para cerrar sesión -->
+        <span>Cerrar sesión</span>
+      </a>
+      
+      <!-- Cerrar sesión -->
+     
+    </nav>
+  </aside>
+
+  <main class="contenido">
+    <router-outlet></router-outlet>
+  </main>
+</div>

@@ -1,0 +1,101 @@
+:root {
+  --primary-color: #4285f4; // valor por defecto
+}
+
+.configuracion-container {
+  padding: 20px;
+  font-family: var(--system-font);
+
+  h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+  }
+
+  .temas-predeterminados {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .tema {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+    border: 2px solid transparent;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &.activo {
+      border: 2px solid var(--primary-color);
+    }
+
+    .seleccionado {
+      font-size: 24px;
+      color: white;
+      font-weight: bold;
+      text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .color-selector {
+    margin-top: 20px;
+
+    label {
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    input[type="color"] {
+      width: 50px;
+      height: 30px;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .fuente-selector {
+    margin-top: 20px;
+
+    label {
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    select {
+      padding: 5px 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-family: var(--system-font);
+    }
+  }
+
+  .boton-reset {
+    margin-top: 30px;
+
+    button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: var(--hover-color);
+      }
+    }
+  }
+}

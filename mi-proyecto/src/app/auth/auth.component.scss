@@ -1,0 +1,88 @@
+h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(66, 133, 244, 0.2);
+  padding-bottom: 10px;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .input-icon {
+      position: relative;
+
+      i {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #888;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.6rem 0.6rem 0.6rem 30px; /* Ajuste del padding para íconos */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box; /* Asegura que el padding no desborde */
+      }
+    }
+  }
+
+  button {
+    width: 100%;
+    padding: 0.7rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color:var(--primary-color);
+    }
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+
+  .crear-cuenta {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+
+    a {
+      color: var(--primary-color);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  .error-msg {
+    margin-top: 1rem;
+    color: red;
+    text-align: center;
+  }
+}

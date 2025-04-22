@@ -1,0 +1,216 @@
+:root {
+  --system-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente por defecto */
+
+  /* Colores */
+  --primary-color: #4285f4;
+  --secondary-color: #f2f2f2;
+  --text-color: #ffffff;
+  --hover-color: #3367d6;
+  --background-color-light: #9f4a4a;
+  --background-color-dark: #c70707;
+  --card-background-color: #f2f2f2;
+  --sidebar-background-color: #f2f2f2;
+
+  /* Estilos */
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+/* Variables para colores y estilos */
+button {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+/* Asegura que html y body ocupen toda la altura */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: var(--system-font); // Cambiado aquí
+}
+
+
+/* Contenedor general que envuelve sidebar y contenido */
+.container {
+  display: flex;
+  min-height: 100vh;
+  height: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 300px;
+  background-color: var(--sidebar-background-color);
+  padding: 1.5rem;
+  height: 100vh;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  border-right: 4px solid var(--primary-color);
+  background: linear-gradient(to bottom, var(--sidebar-background-color), var(--background-color-dark));
+}
+
+/* Título del sidebar */
+.sidebar-title {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(66, 133, 244, 0.2); /* Valor hexadecimal explícito */
+  text-align: center;
+}
+
+/* Enlaces del sidebar */
+.sidebar nav {
+  margin-top: 1.5rem;
+}
+
+/* MODIFICADO: Asegurando que los enlaces tengan bordes redondeados */
+.sidebar nav a {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  text-decoration: none;
+  color: var(--text-color);
+  margin-bottom: 8px;
+  border-radius: var(--border-radius); /* Asegurando que se aplique el borde redondeado */
+  transition: var(--transition);
+  background-color: rgba(242, 242, 242, 0.5); /* Valor hexadecimal explícito */
+  
+  i, svg {
+    margin-right: 10px;
+    font-size: 1.2rem;
+    color: var(--text-color); /* Cambiado para que coincida con el texto */
+    transition: var(--transition);
+  }
+}
+
+/* Estilo para el elemento activo - MODIFICADO */
+.sidebar nav a.activo {
+  background-color: var(--primary-color); /* Fondo con color primario */
+  color: white; /* Texto blanco */
+  box-shadow: var(--box-shadow);
+  font-weight: 600; /* Texto más grueso para destacar */
+  border-radius: var(--border-radius); /* Asegurando que se aplique el borde redondeado */
+  
+  i, svg {
+    color: white; /* Icono blanco */
+  }
+}
+
+/* Estilo para hover - MODIFICADO */
+.sidebar nav a:hover {
+  background-color: var(--primary-color); /* Fondo con color primario */
+  color: white; /* Texto blanco */
+  transform: translateX(5px);
+  border-radius: var(--border-radius); /* Asegurando que se aplique el borde redondeado */
+  
+  i, svg {
+    color: white; /* Icono blanco */
+  }
+}
+
+/* Contenido principal */
+.contenido {
+  flex-grow: 1;
+  padding: 2rem;
+  background-color: var(--background-color-light);
+  color: var(--text-color);
+  box-sizing: border-box;
+  margin-left: 300px;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+/* Estilos para tarjetas o secciones en el contenido */
+.card {
+  background-color: var(--card-background-color);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  h2 {
+    color: var(--primary-color);
+    margin-top: 0;
+    border-bottom: 1px solid rgba(66, 133, 244, 0.2); /* Valor hexadecimal explícito */
+    padding-bottom: 0.5rem;
+  }
+}
+
+/* Botones estilo Angular */
+.btn {
+  display: inline-block;
+  background-color: rgba(242, 242, 242, 0.8); /* Valor hexadecimal explícito */
+  color: var(--text-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  
+  &:hover {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  &.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    
+    &:hover {
+      background-color: var(--hover-color);
+    }
+  }
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 250px;
+  }
+  
+  .contenido {
+    margin-left: 250px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+    width: 0;
+    padding: 0;
+    overflow: hidden;
+    
+    &.open {
+      width: 250px;
+      padding: 1.5rem;
+    }
+  }
+  
+  .contenido {
+    margin-left: 0;
+  }
+}

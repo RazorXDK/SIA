@@ -1,0 +1,127 @@
+<div class="cuenta-container">
+    <h2>Mi Cuenta</h2>
+
+    <!-- Información personal -->
+    <div class="informacion-personal">
+        <h3>Información Personal</h3>
+
+        <div class="datos-usuario">
+            <div class="datos-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" class="form-control" [(ngModel)]="usuario.nombre">
+                </div>
+
+                <div class="form-group">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" class="form-control" [(ngModel)]="usuario.apellido">
+                </div>
+
+                <div class="form-group">
+                    <label for="correo">Correo electrónico:</label>
+                    <input type="email" id="correo" class="form-control" [(ngModel)]="usuario.correo">
+                </div>
+
+                <div class="form-group">
+                    <label for="usuario">Nombre de usuario:</label>
+                    <input type="text" id="usuario" class="form-control" [(ngModel)]="usuario.usuario">
+                </div>
+
+                <div class="form-group">
+                    <label for="fechaNacimiento">Fecha de nacimiento:</label>
+                    <input type="date" id="fechaNacimiento" class="form-control" [(ngModel)]="usuario.fechaNacimiento">
+                </div>
+
+                <button class="btn btn-primary" (click)="guardarCambios()">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cambio de contraseña -->
+    <div class="cambio-contrasena">
+        <h3>Cambiar Contraseña</h3>
+
+        <div class="form-group">
+            <label for="contrasenaActual">Contraseña actual:</label>
+            <input type="password" id="contrasenaActual" class="form-control" [(ngModel)]="contrasenas.actual">
+        </div>
+
+        <div class="form-group">
+            <label for="nuevaContrasena">Nueva contraseña:</label>
+            <input type="password" id="nuevaContrasena" class="form-control" [(ngModel)]="contrasenas.nueva">
+        </div>
+
+        <div class="form-group">
+            <label for="confirmarContrasena">Confirmar contraseña:</label>
+            <input type="password" id="confirmarContrasena" class="form-control" [(ngModel)]="contrasenas.confirmar">
+        </div>
+
+        <button class="btn btn-primary" (click)="cambiarContrasena()">Cambiar contraseña</button>
+    </div>
+
+    <!-- Historial de sesiones -->
+    <div class="historial-sesiones">
+        <h3>Historial de Sesiones</h3>
+
+        <table class="tabla-datos">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Dispositivo</th>
+                    <th>Ubicación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let sesion of sesiones">
+                    <td>{{ sesion.fecha }}</td>
+                    <td>{{ sesion.hora }}</td>
+                    <td>{{ sesion.dispositivo }}</td>
+                    <td>{{ sesion.ubicacion }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Tabla de usuarios (para administradores) -->
+    <div class="tabla-usuarios" *ngIf="esAdmin">
+        <h3>Gestión de Usuarios</h3>
+
+        <div class="acciones">
+            <button class="btn btn-primary" (click)="agregarUsuario()">Agregar Usuario</button>
+            <input type="text" placeholder="Buscar usuario..." class="form-control busqueda" [(ngModel)]="busqueda">
+        </div>
+
+        <table class="tabla-datos">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo</th>
+                    <th>Usuario</th>
+                    <th>Contraseña</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of usuariosFiltrados">
+                    <td>{{ user.nombre }}</td>
+                    <td>{{ user.apellido }}</td>
+                    <td>{{ user.correo }}</td>
+                    <td>{{ user.usuario }}</td>
+                    <td>••••••••</td>
+                    <td>{{ user.fechaNacimiento | date:'dd/MM/yyyy' }}</td>
+                    <td class="acciones-celda">
+                        <button class="btn-icon" (click)="editarUsuario(user)">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn-icon" (click)="eliminarUsuario(user.id)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

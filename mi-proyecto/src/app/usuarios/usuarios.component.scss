@@ -1,0 +1,131 @@
+.establecimiento-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+
+  h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(66, 133, 244, 0.2);
+    padding-bottom: 10px;
+  }
+
+  form {
+    background-color: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 30px;
+
+    div {
+      margin-bottom: 15px;
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: var(--border-radius);
+        font-size: 14px;
+
+        &:focus {
+          border-color: var(--primary-color);
+          outline: none;
+        }
+      }
+    }
+
+    .acciones-formulario {
+      display: flex;
+      gap: 10px;
+
+      button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        background-color: #4caf50; /* Nuevo color para Agregar/Actualizar */
+        color: white;
+        transition: background-color var(--transition), color var(--transition);
+        font-weight: 500;
+
+        &:hover {
+          background-color: #45a049; /* Hover más oscuro */
+          color: white;
+        }
+
+        &:last-child {
+          background-color: #ccc; /* Botón de "Cancelar" con un color neutro */
+          color: #333;
+
+          &:hover {
+            background-color: #bbb;
+            color: #333;
+          }
+        }
+      }
+    }
+  }
+}
+
+.tabla-usuarios {
+  background-color: white;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+
+  .tabla-datos {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      vertical-align: middle;
+    }
+
+    th {
+      background-color: #f8f8f8;
+      font-weight: 600;
+    }
+
+    tr:hover {
+      background-color: hsl(0, 0%, 96%);
+    }
+
+    td button {
+      padding: 6px 12px;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      margin-right: 8px;
+      color: white;
+      background-color: #ff9800; /* Botón Editar con un color naranja */
+      transition: background-color var(--transition), color var(--transition);
+
+      &:hover {
+        background-color: #f57c00; /* Hover más oscuro para el botón Editar */
+        color: white;
+      }
+
+      &:last-child {
+        background-color: #e74c3c; /* Botón Eliminar con color rojo */
+
+        &:hover {
+          background-color: #c0392b; /* Hover más oscuro para Eliminar */
+          color: white; /* Asegura que el texto sea blanco */
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,99 @@
+<div class="establecimiento-container">
+    <h2>Gestión de Establecimientos</h2>
+  
+    <!-- Formulario de establecimiento -->
+    <div class="formulario-establecimiento">
+      <h3>Información del Establecimiento</h3>
+  
+      <div class="datos-form">
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" class="form-control" [(ngModel)]="establecimiento.nombre">
+        </div>
+  
+        <div class="form-group">
+          <label for="direccion">Dirección:</label>
+          <input type="text" id="direccion" class="form-control" [(ngModel)]="establecimiento.direccion">
+        </div>
+  
+        <div class="form-group">
+          <label for="telefono">Teléfono:</label>
+          <input type="tel" id="telefono" class="form-control" [(ngModel)]="establecimiento.telefono">
+        </div>
+  
+        <div class="form-group">
+          <label for="correo">Correo electrónico:</label>
+          <input type="email" id="correo" class="form-control" [(ngModel)]="establecimiento.correo">
+        </div>
+  
+        <div class="form-group">
+          <label for="pais">País:</label>
+          <select id="pais" class="form-control" [(ngModel)]="establecimiento.pais">
+            <option value="">Seleccione un país</option>
+            <option *ngFor="let pais of paises" [value]="pais">{{ pais }}</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="tipo">Tipo de establecimiento:</label>
+          <select id="tipo" class="form-control" [(ngModel)]="establecimiento.tipo">
+            <option value="">Seleccione un tipo</option>
+            <option *ngFor="let tipo of tiposEstablecimiento" [value]="tipo">{{ tipo }}</option>
+          </select>
+        </div>
+  
+        <div class="botones-accion">
+          <button class="btn btn-primary" (click)="guardarEstablecimiento()">
+            {{ modoEdicion ? 'Actualizar' : 'Agregar' }} Establecimiento
+          </button>
+          <button *ngIf="modoEdicion" class="btn btn-secondary" (click)="cancelarEdicion()">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Tabla de establecimientos -->
+    <div class="tabla-establecimientos">
+      <h3>Lista de Establecimientos</h3>
+  
+      <div class="acciones">
+        <button class="btn btn-primary" (click)="limpiarFormulario()" *ngIf="modoEdicion">
+          Nuevo Establecimiento
+        </button>
+        <input type="text" placeholder="Buscar establecimiento..." class="form-control busqueda" [(ngModel)]="busqueda">
+      </div>
+  
+      <table class="tabla-datos">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Correo</th>
+            <th>País</th>
+            <th>Tipo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let est of establecimientosFiltrados">
+            <td>{{ est.nombre }}</td>
+            <td>{{ est.direccion }}</td>
+            <td>{{ est.telefono }}</td>
+            <td>{{ est.correo }}</td>
+            <td>{{ est.pais }}</td>
+            <td>{{ est.tipo }}</td>
+            <td class="acciones-celda">
+              <button class="btn-icon" (click)="editarEstablecimiento(est)">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn-icon" (click)="eliminarEstablecimiento(est.id)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

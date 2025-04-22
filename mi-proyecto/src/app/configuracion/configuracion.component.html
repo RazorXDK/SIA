@@ -1,0 +1,33 @@
+<div class="configuracion-container">
+  <h2>Configuración de Tema</h2>
+
+  <!-- Temas predeterminados -->
+  <div class="temas-predeterminados">
+    <h3>Temas Predeterminados</h3>
+    <div 
+      class="tema" 
+      *ngFor="let tema of temasPredeterminados" 
+      [style.background-color]="tema" 
+      (click)="seleccionarTema(tema)">
+      <span *ngIf="color === tema" class="seleccionado">✔</span>
+    </div>
+  </div>
+
+  <!-- Tema personalizado -->
+  <div class="color-selector">
+    <label for="colorPicker">Elige tu color primario:</label>
+    <input type="color" id="colorPicker" [value]="color" (input)="cambiarColor($event)">
+  </div>
+
+  <!-- Fuente del sistema -->
+  <div class="fuente-selector">
+    <label for="fontSelect">Selecciona la fuente:</label>
+    <select id="fontSelect" (change)="cambiarFuente($event)">
+      <option value="Roboto, sans-serif">Roboto</option>
+      <option value="Open Sans, sans-serif">Open Sans</option>
+      <option value="Lato, sans-serif">Lato</option>
+      <option value="Montserrat, sans-serif">Montserrat</option>
+      <option value="Courier New, monospace">Courier New</option>
+    </select>
+  </div>
+</div>

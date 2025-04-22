@@ -1,0 +1,26 @@
+<div class="login-container">
+  <h2>Iniciar Sesión</h2>
+  <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
+    <div class="form-group">
+      <label for="usuario">Usuario</label>
+      <div class="input-icon">
+        <i class="fas fa-user"></i>
+        <input type="text" id="usuario" formControlName="USUARIO" placeholder="Ingresa tu usuario" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="contrasena">Contraseña</label>
+      <div class="input-icon">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="contrasena" formControlName="CONTRASENA" placeholder="Ingresa tu contraseña" />
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+  </form>
+
+  <div class="crear-cuenta">
+    ¿No tienes cuenta? <a routerLink="/registro">Crear una cuenta</a>
+  </div>
+</div>

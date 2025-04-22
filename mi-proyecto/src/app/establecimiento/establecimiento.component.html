@@ -1,0 +1,107 @@
+<div class="establecimiento-container">
+    <h2>Lista de Establecimientos</h2>
+  
+    <!-- FORMULARIO PARA CREAR / EDITAR -->
+    <form (ngSubmit)="guardarEstablecimiento()" #establecimientoForm="ngForm">
+      <!-- Mostrar el campo ID_ESTABLECIMIENTO solo cuando se esté editando -->
+      <div *ngIf="establecimientoActual.ID_ESTABLECIMIENTO">
+        <label>ID de Establecimiento:</label>
+        <input type="text" [(ngModel)]="establecimientoActual.ID_ESTABLECIMIENTO" name="ID_ESTABLECIMIENTO" disabled />
+      </div>
+  
+      <div>
+        <label>País:</label>
+        <select [(ngModel)]="establecimientoActual.ID_PAIS" name="ID_PAIS" required>
+        <option *ngFor="let pais of paises" [value]="pais.ID_PAIS">{{ pais.NOMBRE_PAIS }}</option>
+        </select>
+      </div>
+  
+      <div>
+        <label>Tipo de Establecimiento:</label>
+        <select [(ngModel)]="establecimientoActual.ID_TIPO_ESTABLECIMIENTO" name="ID_TIPO_ESTABLECIMIENTO" required>
+         <option *ngFor="let tipo of tiposEstablecimiento" [value]="tipo.ID_TIPO_ESTABLECIMIENTO">
+            {{ tipo.DESCRIPCION }}
+          </option>
+        </select>
+      </div>
+  
+      <div>
+        <label>Nombre:</label>
+        <input type="text" [(ngModel)]="establecimientoActual.NOMBRE" name="NOMBRE" required />
+      </div>
+  
+      <div>
+        <label>Dirección:</label>
+        <input type="text" [(ngModel)]="establecimientoActual.DIRECCION" name="DIRECCION" />
+      </div>
+  
+      <div>
+        <label>Teléfono:</label>
+        <input type="text" [(ngModel)]="establecimientoActual.TELEFONO" name="TELEFONO" />
+      </div>
+  
+      <div>
+        <label>Correo Electrónico:</label>
+        <input type="email" [(ngModel)]="establecimientoActual.CORREO_ELECTRONICO" name="CORREO_ELECTRONICO" />
+      </div>
+  
+      <div>
+        <label>Fecha de Creación:</label>
+        <input type="date" [(ngModel)]="establecimientoActual.FECHA_CREACION" name="FECHA_CREACION" />
+      </div>
+  
+      <div>
+        <label>Estado:</label>
+        <select [(ngModel)]="establecimientoActual.ESTADO" name="ESTADO" required>
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+      </div>
+  
+      <!-- Botones de acción -->
+      <div class="acciones-formulario">
+        <button type="submit" [disabled]="establecimientoForm.invalid">
+          {{ establecimientoActual.ID_ESTABLECIMIENTO ? 'Actualizar' : 'Agregar' }}
+        </button>
+        <button type="button" (click)="cancelarEdicion()">Cancelar</button>
+      </div>
+    </form>
+  
+    <!-- TABLA DE ESTABLECIMIENTOS -->
+    <div class="tabla-establecimientos">
+      <table class="tabla-datos">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>País</th>
+            <th>Tipo</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Correo</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let est of establecimientos">
+            <td>{{ est.ID_ESTABLECIMIENTO }}</td>
+            <td>{{ obtenerNombrePais(est.ID_PAIS) }}</td>
+            <td>{{ obtenerNombreTipo(est.ID_TIPO_ESTABLECIMIENTO) }}</td>
+            <td>{{ est.NOMBRE }}</td>
+            <td>{{ est.DIRECCION }}</td>
+            <td>{{ est.TELEFONO }}</td>
+            <td>{{ est.CORREO_ELECTRONICO }}</td>
+            <td>{{ est.FECHA_CREACION }}</td>
+            <td>{{ est.ESTADO }}</td>
+            <td>
+              <button (click)="editarEstablecimiento(est)">Editar</button>
+              <button (click)="eliminarEstablecimiento(est.ID_ESTABLECIMIENTO)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

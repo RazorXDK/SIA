@@ -1,0 +1,84 @@
+<div class="establecimiento-container">
+  <h2>Lista de Usuarios</h2>
+
+  <!-- FORMULARIO PARA CREAR / EDITAR -->
+  <form (ngSubmit)="guardarUsuario()" #usuarioForm="ngForm">
+    <!-- Mostrar el campo ID_USUARIO solo cuando se esté editando -->
+    <div *ngIf="usuarioActual.ID_USUARIO">
+      <label>ID de Usuario:</label>
+      <input type="text" [(ngModel)]="usuarioActual.ID_USUARIO" name="ID_USUARIO" disabled />
+    </div>
+
+    <div>
+      <label>Nombre:</label>
+      <input type="text" [(ngModel)]="usuarioActual.NOMBRE" name="NOMBRE" required />
+    </div>
+
+    <div>
+      <label>Apellido:</label>
+      <input type="text" [(ngModel)]="usuarioActual.APELLIDO" name="APELLIDO" required />
+    </div>
+
+    <div>
+      <label>Correo:</label>
+      <input type="email" [(ngModel)]="usuarioActual.CORREO_USUARIO" name="CORREO_USUARIO" required />
+    </div>
+
+    <div>
+      <label>Usuario:</label>
+      <input type="text" [(ngModel)]="usuarioActual.USUARIO" name="USUARIO" required />
+    </div>
+
+    <div>
+      <label>Contraseña:</label>
+      <input type="password" [(ngModel)]="usuarioActual.CONTRASENA" name="CONTRASENA" required minlength="6"/>
+    </div>
+
+    <div>
+      <label>Estado:</label>
+      <select [(ngModel)]="usuarioActual.ESTADO" name="ESTADO" required>
+        <option value="Activo">Activo</option>
+        <option value="Inactivo">Inactivo</option>
+      </select>
+    </div>
+
+    <!-- Contenedor para los botones de acción -->
+    <div class="acciones-formulario">
+      <button type="submit" [disabled]="usuarioForm.invalid">
+        {{ usuarioActual.ID_USUARIO ? 'Actualizar' : 'Agregar' }}
+      </button>
+      <button type="button" (click)="cancelarEdicion()">Cancelar</button>
+    </div>
+  </form>
+
+  <!-- TABLA DE USUARIOS -->
+  <div class="tabla-usuarios">
+    <table class="tabla-datos">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Correo</th>
+          <th>Usuario</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios">
+          <td>{{ usuario.ID_USUARIO }}</td>
+          <td>{{ usuario.NOMBRE }}</td>
+          <td>{{ usuario.APELLIDO }}</td>
+          <td>{{ usuario.CORREO_USUARIO }}</td>
+          <td>{{ usuario.USUARIO }}</td>
+          <td>{{ usuario.ESTADO }}</td>
+          <td>
+            <button (click)="editarUsuario(usuario)">Editar</button>
+            <button (click)="eliminarUsuario(usuario.ID_USUARIO)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
